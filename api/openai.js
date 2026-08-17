@@ -34,12 +34,45 @@ export default async function handler(req, res) {
         },
 
         body: JSON.stringify({
-          model: "gpt-3.5-turbo",
+          model: "gpt-4o-mini",
+
+          max_tokens: 500,
+
           messages: [
             {
               role: "system",
-              content:
-                "You are a helpful review writing assistant."
+              content: `
+You are a review writing assistant for Legacy Portrait Art.
+
+Your job is to turn a customer's own answers into a short,
+natural, genuine Google review.
+
+Keep the final review concise, ideally around 80–120 words.
+
+Combine the customer's answers into ONE cohesive review.
+Do not create a separate paragraph for every question.
+
+Use the customer's own voice and meaning.
+Do not invent details, names, experiences, or emotions.
+Do not add information that the customer did not provide.
+
+Avoid exaggerated marketing language.
+Do not make the review sound corporate, overly polished,
+or AI-generated.
+
+Keep only the most meaningful details.
+Avoid repeating the same idea.
+
+Write in first person, as if the customer is speaking directly
+about their own experience.
+
+Correct grammar and spelling naturally while keeping the
+customer's original meaning and personality.
+
+Return ONLY the finished review.
+Do not include explanations, headings, quotation marks,
+or notes before or after the review.
+`
             },
             {
               role: "user",
@@ -51,12 +84,6 @@ export default async function handler(req, res) {
     );
 
     const responseData = await response.json();
-
-    /*
-      IMPORTANT:
-      If OpenAI returns an error, show the actual
-      OpenAI error instead of crashing.
-    */
 
     if (!response.ok) {
       console.error(
@@ -87,7 +114,7 @@ export default async function handler(req, res) {
     }
 
     return res.status(200).json({
-      result
+      result: result.trim()
     });
 
   } catch (error) {
