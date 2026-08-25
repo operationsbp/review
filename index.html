@@ -952,76 +952,6 @@
             ></p>
 
 
-            <div class="share-choice">
-
-              <p class="choice-kicker">
-                Where would you like to share it?
-              </p>
-
-              <div class="share-option">
-
-                <h3>
-                  Leave a Google Review
-                </h3>
-
-                <p>
-                  Share your honest experience publicly on Google.
-                </p>
-
-                <a
-                  id="google-review"
-                  class="button button-outline"
-                  href="https://g.page/r/CUIJZHfwiFIUEBM/review"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  Leave a Google Review
-                </a>
-
-              </div>
-
-            </div>
-
-
-            <div class="photo-note">
-
-              <p class="choice-kicker">
-                One more thing…
-              </p>
-
-              <h3>
-                📷 Show us how your portrait lives in your home.
-              </h3>
-
-              <p>
-                If your portrait is already displayed at home, consider adding a
-                photo to your Google review. It helps others envision what their
-                own finished artwork could look like.
-              </p>
-
-              <p class="photo-note-small">
-                A simple phone photo is perfect.
-              </p>
-
-            </div>
-
-
-            <button
-              id="start-over"
-              class="text-button"
-              type="button"
-            >
-              Start over
-            </button>
-
-            <button
-              id="change-rating-result"
-              class="text-button change-rating"
-              type="button"
-            >
-              Change my rating
-            </button>
-
           </div>
 
         </div>
@@ -1278,19 +1208,13 @@
     const copyStatus =
       document.getElementById("copy-status");
 
-    const startOver =
-      document.getElementById("start-over");
-
-    const changeRatingFive =
+     const changeRatingFive =
       document.getElementById("change-rating-five");
 
     const changeRatingFeedback =
       document.getElementById("change-rating-feedback");
 
-    const changeRatingResult =
-      document.getElementById("change-rating-result");
-
-
+ 
     /* =========================================
        STATE
     ========================================= */
@@ -1484,13 +1408,7 @@
     );
 
 
-    changeRatingResult.addEventListener(
-      "click",
-      goBackToRating
-    );
-
-
-    /* =========================================
+     /* =========================================
        OPEN REVIEW ASSISTANT
     ========================================= */
 
@@ -1956,23 +1874,7 @@ their experience sound better than they described it.
       }
     );
 
-    /* =========================================
-       START OVER
-    ========================================= */
-
-    startOver.addEventListener(
-      "click",
-      () => {
-
-        resetInterview();
-
-        aiAnswer.focus();
-
-      }
-    );
-
-
-    /* =========================================
+     /* =========================================
        INITIALIZE
     ========================================= */
 
