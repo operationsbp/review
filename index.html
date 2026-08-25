@@ -215,6 +215,17 @@
       text-transform: uppercase;
     }
 
+    .change-rating {
+      display: block;
+      margin: 26px auto 0;
+      padding: 8px;
+    }
+
+    .change-rating:hover {
+      text-decoration: underline;
+      transform: none;
+    }
+
     /* =========================
        FIVE STAR SCREEN
     ========================= */
@@ -386,6 +397,146 @@
       margin-top: 12px;
     }
 
+    .result-intro {
+      margin: -2px 0 18px;
+      color: var(--muted);
+      font: 15px/1.65 Georgia, "Times New Roman", serif;
+    }
+
+    .photo-note {
+      margin-top: 28px;
+      padding: 24px;
+      background: #f8f3e9;
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .photo-note h3 {
+      font-size: clamp(22px, 4vw, 28px);
+    }
+
+    .photo-note p:not(.choice-kicker):not(.photo-note-small) {
+      max-width: 540px;
+      margin: 12px auto 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .photo-note-small {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    .share-choice {
+      margin-top: 30px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+
+    .share-option {
+      margin-top: 18px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      background: #fff;
+      text-align: center;
+    }
+
+    .share-option-primary {
+      background: #f8f3e9;
+    }
+
+    .share-option h3 {
+      font-size: clamp(22px, 4vw, 28px);
+    }
+
+    .share-option p:not(.choice-kicker) {
+      max-width: 535px;
+      margin: 10px auto 20px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .options-section {
+      margin-top: 48px;
+    }
+
+    .options-section > .choice-kicker {
+      margin: 0 0 24px;
+    }
+
+    .private-feedback-cta {
+      margin: 0 auto;
+      padding: 32px clamp(20px, 5vw, 38px);
+      background: #f8f3e9;
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .private-feedback-cta h3 {
+      margin: 0;
+    }
+
+    .private-feedback-cta p {
+      max-width: 535px;
+      margin: 13px auto 22px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .private-feedback-form {
+      width: 100%;
+      max-width: 680px;
+      height: 720px;
+      margin: 26px auto 0;
+      overflow: visible;
+      border-radius: 8px;
+    }
+
+    .private-feedback-form iframe {
+      display: block;
+      width: 100%;
+      height: 720px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    .five-star-options {
+      margin-top: 34px;
+    }
+
+    .google-primary {
+      padding: 30px clamp(20px, 5vw, 38px);
+      background: #f8f3e9;
+      border: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .google-primary h3 {
+      margin: 0;
+    }
+
+    .google-primary p {
+      max-width: 535px;
+      margin: 13px auto 22px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .google-primary .button {
+      min-width: min(100%, 360px);
+    }
+
+    .google-photo-note {
+      max-width: 500px;
+      margin: 15px auto 0;
+      color: var(--muted);
+      font: 14px/1.6 Georgia, "Times New Roman", serif;
+    }
+
+
+
     /* =========================
        DIVIDER
     ========================= */
@@ -466,6 +617,23 @@
 
       .choice {
         padding: 25px 18px;
+      }
+
+      .options-section {
+        margin-top: 40px;
+      }
+
+      .options-section > .choice-kicker {
+        margin-bottom: 22px;
+      }
+
+      .private-feedback-cta {
+        padding: 28px 18px;
+      }
+
+      .private-feedback-form {
+        max-width: 100%;
+        height: 720px;
       }
 
       .assistant-heading {
@@ -575,7 +743,7 @@
 
 
       <!-- =================================
-           SCREEN 2: FIVE STAR EXPERIENCE
+           SCREEN 2: REVIEW CONCIERGE
       ================================== -->
 
       <section
@@ -584,19 +752,19 @@
         hidden
       >
 
-        <div class="five-stars">
+        <div id="rating-stars-display" class="five-stars">
           ★★★★★
         </div>
 
-        <p class="eyebrow">
+        <p class="eyebrow" id="experience-eyebrow">
           Thank you
         </p>
 
-        <h2>
-          We’re so glad you love your portrait art!
+        <h2 id="experience-heading">
+          We’re so glad you loved your experience.
         </h2>
 
-        <p class="lede">
+        <p class="lede" id="experience-lede">
           Would you share a few words? Your story helps another
           family imagine what creating something meaningful
           with Legacy Portrait Art can feel like.
@@ -606,16 +774,16 @@
         <div class="choice">
 
           <p class="choice-kicker">
-            Your portraits. Your story.
+            Your experience. Your story.
           </p>
 
           <h3>
-            What do your portraits mean to you?
+            Tell us what you’d like to say.
           </h3>
 
           <p>
-            Answer four simple questions, and our Review Concierge
-            will turn your own thoughts and words into a polished,
+            Answer two simple questions, and our Review Concierge
+            will organize your own thoughts and words into a polished,
             editable review.
           </p>
 
@@ -656,13 +824,13 @@
               </p>
 
               <h3>
-                Let’s begin with your portraits.
+                Let’s begin with your experience.
               </h3>
 
             </div>
 
             <span class="time">
-              About 60 seconds
+              About 30 seconds
             </span>
 
           </div>
@@ -678,7 +846,7 @@
               id="step-label"
               class="step"
             >
-              Question 1 of 4
+              Question 1 of 2
             </p>
 
 
@@ -745,12 +913,18 @@
           >
 
             <p class="eyebrow">
-              Here’s your review
+              Your review is ready
             </p>
 
             <h3>
               Make it sound exactly like you.
             </h3>
+
+            <p class="result-intro">
+              We’ve organized your thoughts into a review.
+              Read through it and make any changes you’d like
+              before sharing.
+            </p>
 
             <textarea
               id="generated-review"
@@ -766,18 +940,8 @@
                 class="button button-gold"
                 type="button"
               >
-                Copy my review
+                Copy My Review
               </button>
-
-              <a
-                id="google-review"
-                class="button button-outline"
-                href="https://g.page/r/CUIJZHfwiFIUEBM/review"
-                target="_blank"
-                rel="noopener"
-              >
-                Share on Google
-              </a>
 
             </div>
 
@@ -787,6 +951,85 @@
               role="status"
             ></p>
 
+
+            <div class="share-choice">
+
+              <p class="choice-kicker">
+                Where would you like to share it?
+              </p>
+
+              <div class="share-option share-option-primary">
+
+                <h3>
+                  Share Privately
+                </h3>
+
+                <p>
+                  Send your review directly to Legacy Portrait Art
+                  along with any feedback you'd like our team to see.
+                </p>
+
+                <a
+                  id="private-review-link"
+                  class="button button-gold"
+                  href="https://api.leadconnectorhq.com/widget/form/lB8G9JU7tbJBhwjnkYht"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Share My Review Privately
+                </a>
+
+              </div>
+
+              <div class="share-option">
+
+                <h3>
+                  Leave a Google Review
+                </h3>
+
+                <p>
+                  Share your honest experience publicly on Google.
+                </p>
+
+                <a
+                  id="google-review"
+                  class="button button-outline"
+                  href="https://g.page/r/CUIJZHfwiFIUEBM/review"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Leave a Google Review
+                </a>
+
+              </div>
+
+            </div>
+
+
+            <div class="photo-note">
+
+              <p class="choice-kicker">
+                One more thing…
+              </p>
+
+              <h3>
+                📷 Show us how your portrait lives in your home.
+              </h3>
+
+              <p>
+                If your portrait is already hanging in your home,
+                consider adding a photo to your Google review.
+                It helps other families imagine what their own
+                finished artwork could look like.
+              </p>
+
+              <p class="photo-note-small">
+                A simple phone photo is perfect.
+              </p>
+
+            </div>
+
+
             <button
               id="start-over"
               class="text-button"
@@ -795,30 +1038,131 @@
               Start over
             </button>
 
+            <button
+              id="change-rating-result"
+              class="text-button change-rating"
+              type="button"
+            >
+              Change my rating
+            </button>
+
           </div>
 
         </div>
 
 
-        <div class="divider">
-          <span>or</span>
-        </div>
+        <div id="review-options" class="options-section">
 
+          <!-- 5-STAR: GOOGLE IS THE PRIMARY NEXT STEP -->
 
-        <div class="direct">
-
-          <p class="choice-kicker">
-            Already know what you’d like to say?
-          </p>
-
-          <a
-            class="button button-outline"
-            href="https://g.page/r/CUIJZHfwiFIUEBM/review"
-            target="_blank"
-            rel="noopener"
+          <div
+            id="five-star-options"
+            class="five-star-options"
+            hidden
           >
-            Leave a Google review
-          </a>
+
+            <div class="google-primary">
+
+              <p class="choice-kicker">
+                Already know what you’d like to say?
+              </p>
+
+              <a
+                class="button button-gold"
+                href="https://g.page/r/CUIJZHfwiFIUEBM/review"
+                target="_blank"
+                rel="noopener"
+              >
+                Share Your Review on Google
+              </a>
+
+              <p class="google-photo-note">
+                If your portrait is already hanging in your home,
+                consider adding a photo to your Google review.
+                It helps other families imagine what their own
+                finished artwork could look like.
+              </p>
+
+            </div>
+
+
+            
+
+          </div>
+
+
+          <!-- 1-4 STAR: PRIVATE FEEDBACK IS PROMINENT,
+               GOOGLE REMAINS AVAILABLE -->
+
+          <div
+            id="other-rating-options"
+            class="options-section"
+            hidden
+          >
+
+            <p class="choice-kicker">
+              Already know what to say?
+            </p>
+
+            <div class="private-feedback-cta">
+
+              <h3>
+                Tell Us What We Can Do Better
+              </h3>
+
+              <p>
+                Your feedback goes directly to our team and gives us an
+                opportunity to improve the experience for every family
+                we serve.
+              </p>
+
+              <div class="private-feedback-form">
+
+                <iframe
+                  src="https://api.leadconnectorhq.com/widget/form/lB8G9JU7tbJBhwjnkYht"
+                  style="width:100%;height:100%;border:none;border-radius:8px"
+                  id="inline-lB8G9JU7tbJBhwjnkYht"
+                  data-layout="{'id':'INLINE'}"
+                  data-trigger-type="alwaysShow"
+                  data-trigger-value=""
+                  data-activation-type="alwaysActivated"
+                  data-activation-value=""
+                  data-deactivation-type="neverDeactivate"
+                  data-deactivation-value=""
+                  data-form-name="Review Form 1-4 Stars"
+                  data-height="598"
+                  data-layout-iframe-id="inline-lB8G9JU7tbJBhwjnkYht"
+                  data-form-id="lB8G9JU7tbJBhwjnkYht"
+                  title="Review Form 1-4 Stars"
+                >
+                </iframe>
+
+                <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+
+              </div>
+
+            </div>
+
+
+            <div class="divider">
+              <span>or</span>
+            </div>
+
+
+            <div class="direct">
+
+              <a
+                class="button button-outline"
+                href="https://g.page/r/CUIJZHfwiFIUEBM/review"
+                target="_blank"
+                rel="noopener"
+              >
+                Share Your Honest Review on Google
+              </a>
+
+            </div>
+
+          </div>
 
         </div>
 
@@ -828,55 +1172,16 @@
           genuinely reflects your experience.
         </p>
 
-      </section>
-
-
-      <!-- =================================
-           SCREEN 3: PRIVATE FEEDBACK
-      ================================== -->
-
-      <section
-        id="feedback-screen"
-        class="card screen"
-        hidden
-      >
-
-        <p class="eyebrow">
-          Private feedback
-        </p>
-
-        <h2>
-          Thank you for your honesty.
-        </h2>
-
-        <p class="lede">
-          We care deeply about every family we serve.
-          Your feedback helps us continually improve.
-        </p>
-
-        <div style="margin-top: 30px; width: 100%;">
-          <iframe
-            src="https://api.leadconnectorhq.com/widget/form/lB8G9JU7tbJBhwjnkYht"
-            style="width:100%;height:598px;border:none;border-radius:8px"
-            id="inline-lB8G9JU7tbJBhwjnkYht"
-            data-layout="{'id':'INLINE'}"
-            data-trigger-type="alwaysShow"
-            data-trigger-value=""
-            data-activation-type="alwaysActivated"
-            data-activation-value=""
-            data-deactivation-type="neverDeactivate"
-            data-deactivation-value=""
-            data-form-name="Review Form 1-4 Stars"
-            data-height="598"
-            data-layout-iframe-id="inline-lB8G9JU7tbJBhwjnkYht"
-            data-form-id="lB8G9JU7tbJBhwjnkYht"
-            title="Review Form 1-4 Stars">
-          </iframe>
-
-          <script src="https://link.msgsndr.com/js/form_embed.js"></script>
-        </div>
+        <button
+          id="change-rating-five"
+          class="text-button change-rating"
+          type="button"
+        >
+          Change my rating
+        </button>
 
       </section>
+
 
     </main>
 
@@ -908,15 +1213,17 @@
 
     const QUESTIONS = [
 
-      "When you saw your portraits for the first time, how did you feel?",
+      "What did you love most about your experience with us, from your session through seeing your portraits for the first time?",
 
-      "What do you love most about your finished portrait artwork, and how has seeing it in your home made you feel?",
-
-      "Was there a member of our team who made your experience especially meaningful? If so, what did you appreciate about them?",
-
-      "What do these portraits mean to you now, and what do you think they’ll mean to your family years from now?"
+      "Now that your portraits are in your home, what do they mean to you - and what do you think they’ll mean to your family years from now?"
 
     ];
+
+    function getQuestions() {
+
+      return QUESTIONS;
+
+    }
 
 
     /* =========================================
@@ -929,8 +1236,23 @@
     const fiveScreen =
       document.getElementById("five-screen");
 
-    const feedbackScreen =
-      document.getElementById("feedback-screen");
+    const experienceEyebrow =
+      document.getElementById("experience-eyebrow");
+
+    const experienceHeading =
+      document.getElementById("experience-heading");
+
+    const experienceLede =
+      document.getElementById("experience-lede");
+
+    const ratingStarsDisplay =
+      document.getElementById("rating-stars-display");
+
+    const fiveStarOptions =
+      document.getElementById("five-star-options");
+
+    const otherRatingOptions =
+      document.getElementById("other-rating-options");
 
     const stars =
       document.querySelectorAll(".star");
@@ -983,6 +1305,15 @@
     const startOver =
       document.getElementById("start-over");
 
+    const changeRatingFive =
+      document.getElementById("change-rating-five");
+
+    const changeRatingFeedback =
+      document.getElementById("change-rating-feedback");
+
+    const changeRatingResult =
+      document.getElementById("change-rating-result");
+
 
     /* =========================================
        STATE
@@ -1009,13 +1340,63 @@
       fiveScreen.hidden =
         screen !== "five";
 
-      feedbackScreen.hidden =
-        screen !== "feedback";
-
       window.scrollTo({
         top: 0,
         behavior: "smooth"
       });
+
+    }
+
+
+    /* =========================================
+       REVIEW CONCIERGE EXPERIENCE MESSAGE
+    ========================================= */
+
+    function setExperienceMessage(rating) {
+
+      ratingStarsDisplay.textContent =
+        "★".repeat(rating) + "☆".repeat(5 - rating);
+
+      fiveStarOptions.hidden =
+        rating !== 5;
+
+      otherRatingOptions.hidden =
+        rating === 5;
+
+      if (rating === 5) {
+
+        experienceEyebrow.textContent =
+          "Thank you";
+
+        experienceHeading.textContent =
+          "We’re so glad you loved your experience.";
+
+        experienceLede.textContent =
+          "Would you share a few words? Your story helps another family imagine what creating something meaningful with Legacy Portrait Art can feel like.";
+
+      } else if (rating >= 3) {
+
+        experienceEyebrow.textContent =
+          "Thank you for sharing";
+
+        experienceHeading.textContent =
+          "We’d love to hear more about your experience.";
+
+        experienceLede.textContent =
+          "Tell us what stood out, what you enjoyed, and what could have made your experience even better.";
+
+      } else {
+
+        experienceEyebrow.textContent =
+          "Thank you for your honesty";
+
+        experienceHeading.textContent =
+          "We’d really like to understand your experience.";
+
+        experienceLede.textContent =
+          "Please tell us what stood out, what you appreciated, and what you wish had gone differently. Your honest feedback matters.";
+
+      }
 
     }
 
@@ -1067,15 +1448,9 @@
           );
 
 
-          if (selectedRating === 5) {
+          setExperienceMessage(selectedRating);
 
-            showScreen("five");
-
-          } else {
-
-            showScreen("feedback");
-
-          }
+          showScreen("five");
 
         }
       );
@@ -1095,6 +1470,48 @@
 
         }
       );
+
+
+    /* =========================================
+       CHANGE RATING
+    ========================================= */
+
+    function goBackToRating() {
+
+      selectedRating = 0;
+
+      paintStars(0);
+
+      resetInterview();
+
+      showScreen("rating");
+
+      ratingHint.textContent =
+        "Tap a star to begin";
+
+      setTimeout(
+        () => {
+          const firstStar =
+            document.querySelector('.star[data-rating="1"]');
+
+          if (firstStar) firstStar.focus();
+        },
+        350
+      );
+
+    }
+
+
+    changeRatingFive.addEventListener(
+      "click",
+      goBackToRating
+    );
+
+
+    changeRatingResult.addEventListener(
+      "click",
+      goBackToRating
+    );
 
 
     /* =========================================
@@ -1138,7 +1555,7 @@
       aiAnswer.value = "";
 
       aiQuestion.textContent =
-        QUESTIONS[0];
+        getQuestions()[0];
 
       aiStatus.textContent = "";
 
@@ -1159,11 +1576,13 @@
 
     function updateProgress() {
 
+      const questions = getQuestions();
+
       stepLabel.textContent =
-        `Question ${currentStep} of 4`;
+        `Question ${currentStep} of ${questions.length}`;
 
       progressBar.style.width =
-        `${(currentStep / 4) * 100}%`;
+        `${(currentStep / questions.length) * 100}%`;
 
       helperBack.hidden =
         currentStep === 1;
@@ -1191,7 +1610,7 @@
       helperNext.textContent =
         value
           ? "Thinking…"
-          : currentStep === 4
+          : currentStep === getQuestions().length
             ? "Create my review"
             : "Continue";
 
@@ -1260,19 +1679,15 @@
 
 You are the Review Concierge for Legacy Portrait Art.
 
-A happy client is writing a genuine Google review.
+A client is writing a genuine Google review.
 
 Their rating was ${selectedRating} out of 5 stars.
 
-We asked them these four questions:
+Use these two questions:
 
-1. ${QUESTIONS[0]}
+1. ${getQuestions()[0]}
 
-2. ${QUESTIONS[1]}
-
-3. ${QUESTIONS[2]}
-
-4. ${QUESTIONS[3]}
+2. ${getQuestions()[1]}
 
 
 Here are the client's answers:
@@ -1283,39 +1698,76 @@ ${answers[0] || ""}
 Question 2:
 ${answers[1] || ""}
 
-Question 3:
-${answers[2] || ""}
 
-Question 4:
-${answers[3] || ""}
+YOUR JOB
+
+Organize and lightly polish the client's own thoughts into
+a natural first-person Google review.
+
+You are a summarizer and editor, NOT a testimonial writer.
+The finished review must sound like the client, not like a
+marketing department.
 
 
-Write a warm, genuine Google review using ONLY
-the information the client provided.
+STRICT ACCURACY RULES
 
-IMPORTANT:
+- Use ONLY facts, feelings, opinions, and experiences explicitly
+  provided by the client.
+- Never invent details.
+- Never infer details that are merely possible.
+- Never add names that the client did not provide.
+- Never add family members, pets, relationships, locations,
+  events, products, sessions, or services that were not mentioned.
+- If the client says "one portrait," write about one portrait.
+  Never turn one portrait into "portraits" or multiple pieces.
+- Do not imply that the client has had previous sessions unless
+  they explicitly said so.
+- Do not turn a singular person into "our family" or "our children."
+- Do not intensify emotions. If they said "I liked it," do not
+  turn that into "I was deeply moved."
+- If an answer is vague, stay appropriately vague instead of
+  filling in the gap.
+- Do not manufacture a story arc.
 
-- Keep the client's voice.
-- Do not invent details.
-- Do not invent names.
-- Do not add experiences they did not mention.
-- Do not add exaggerated marketing language.
-- Do not make it sound corporate.
-- Keep the emotional meaning of their answers.
+
+VOICE RULES
+
+- Preserve distinctive phrases the client used when they sound
+  natural.
+- Keep the client's personality and level of enthusiasm.
 - Correct grammar and spelling naturally.
-- Make it sound like a real person wrote it.
-- Write in first person.
+- Avoid corporate language.
+- Avoid polished marketing language.
+- Avoid clichés and generic phrases.
+- Do not insert SEO keywords.
+- Do not add prices, claims, guarantees, or promotional language.
 - Do not mention AI.
-- Do not explain what you are doing.
+- Write in first person.
 - Do not put quotation marks around the review.
 - Return ONLY the finished review.
 
-The review should be polished but still feel personal and authentic.
+
+LENGTH
+
+Aim for approximately 100–175 words when the client provided
+enough material to support that length.
+
+If the client gave short answers, keep the review shorter.
+Never add content simply to reach the target length.
+
+
+FINAL CHECK
+
+Before returning the review, verify that every factual detail
+and emotional statement can be traced directly to the client's
+answers.
+
+Your job is to make their thoughts easier to read, not to make
+their experience sound better than they described it.
 
 `;
 
     }
-
 
     /* =========================================
        CONTINUE
@@ -1355,15 +1807,15 @@ The review should be polished but still feel personal and authentic.
 
 
         /*
-          Questions 1-3
+          Continue until the final question.
         */
 
-        if (currentStep < 4) {
+        if (currentStep < getQuestions().length) {
 
           currentStep++;
 
           aiQuestion.textContent =
-            QUESTIONS[currentStep - 1];
+            getQuestions()[currentStep - 1];
 
           aiAnswer.value = "";
 
@@ -1379,7 +1831,7 @@ The review should be polished but still feel personal and authentic.
 
 
         /*
-          Question 4:
+          Final question:
           Generate the final review.
         */
 
@@ -1453,7 +1905,7 @@ The review should be polished but still feel personal and authentic.
         currentStep--;
 
         aiQuestion.textContent =
-          QUESTIONS[currentStep - 1];
+          getQuestions()[currentStep - 1];
 
         aiAnswer.value =
           answers[currentStep - 1] || "";
@@ -1477,7 +1929,12 @@ The review should be polished but still feel personal and authentic.
       async () => {
 
         const review =
-          generatedReview.value;
+          generatedReview.value.trim();
+
+        if (!review) return;
+
+
+        let copied = false;
 
 
         try {
@@ -1486,25 +1943,42 @@ The review should be polished but still feel personal and authentic.
             review
           );
 
-          copyStatus.textContent =
-            "Copied. Your review is ready to paste into Google.";
+          copied = true;
 
         } catch {
 
+          generatedReview.focus();
+
           generatedReview.select();
 
-          document.execCommand(
-            "copy"
-          );
+          try {
+
+            copied =
+              document.execCommand("copy");
+
+          } catch {
+
+            copied = false;
+
+          }
+
+        }
+
+
+        if (copied) {
 
           copyStatus.textContent =
-            "Copied. Your review is ready to paste into Google.";
+            "✓ Review copied! Now choose where you’d like to share it below.";
+
+        } else {
+
+          copyStatus.textContent =
+            "Please copy your review above before choosing where you’d like to share it.";
 
         }
 
       }
     );
-
 
     /* =========================================
        START OVER
