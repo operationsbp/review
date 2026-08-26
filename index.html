@@ -1834,14 +1834,19 @@ their experience sound better than they described it.
       "click",
       async () => {
 
-        if (!generatedReview) return;
+        const reviewText =
+          typeof generatedReview === "string"
+            ? generatedReview
+            : generatedReview?.value || "";
+
+        if (!reviewText) return;
 
         let copied = false;
 
         try {
 
           await navigator.clipboard.writeText(
-            generatedReview
+            reviewText
           );
 
           copied = true;
