@@ -945,7 +945,7 @@
                 class="button button-gold"
                 type="button"
               >
-                Copy My Review
+                Copy My Review &amp; Share on Google
               </button>
 
             </div>
@@ -1834,54 +1834,36 @@ their experience sound better than they described it.
       "click",
       async () => {
 
-        const review =
-          generatedReview.value.trim();
-
-        if (!review) return;
-
+        if (!generatedReview) return;
 
         let copied = false;
-
 
         try {
 
           await navigator.clipboard.writeText(
-            review
+            generatedReview
           );
 
           copied = true;
 
-        } catch {
+        } catch (error) {
 
-          generatedReview.focus();
-
-          generatedReview.select();
-
-          try {
-
-            copied =
-              document.execCommand("copy");
-
-          } catch {
-
-            copied = false;
-
-          }
+          copied = false;
 
         }
-
 
         if (copied) {
 
-          copyStatus.textContent =
-            "✓ Review copied! Now choose where you’d like to share it below.";
-
-        } else {
-
-          copyStatus.textContent =
-            "Please copy your review above before choosing where you’d like to share it.";
+          copyReview.textContent =
+            "✓ Copied! Opening Google…";
 
         }
+
+        window.open(
+          GOOGLE_REVIEW_URL,
+          "_blank",
+          "noopener,noreferrer"
+        );
 
       }
     );
