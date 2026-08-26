@@ -660,7 +660,12 @@
         font-size: 21px;
       }
     }
-  </style>
+      .google-feedback-placeholder {
+      pointer-events: none;
+      cursor: default;
+    }
+
+</style>
 </head>
 
 <body>
@@ -1006,20 +1011,19 @@
             hidden
           >
 
-            <p class="choice-kicker">
-              Already know what to say?
-            </p>
-
             <div class="private-feedback-cta">
 
+              <p class="choice-kicker">
+                PRIVATE
+              </p>
+
               <h3>
-                Tell Us What We Can Do Better
+                Share Your Feedback With Our Team
               </h3>
 
               <p>
-                Your feedback goes directly to our team and gives us an
-                opportunity to improve the experience for every family
-                we serve.
+                Your comments go directly to our team so we can better understand your experience.
+                If you’d like, a member of our team can also follow up with you personally.
               </p>
 
               <div class="private-feedback-form">
@@ -1058,15 +1062,23 @@
             <div class="direct">
 
               <a
-                class="button button-outline"
-                href="https://g.page/r/CUIJZHfwiFIUEBM/review"
-                target="_blank"
-                rel="noopener"
+                class="button button-outline google-feedback-placeholder"
+                aria-disabled="true"
+                tabindex="-1"
               >
-                Share Your Honest Review on Google
+                Share Your Feedback on Google
               </a>
 
-            </div>
+            
+            <button
+              id="change-rating-other"
+              class="text-button change-rating"
+              type="button"
+            >
+              Change my rating
+            </button>
+
+</div>
 
           </div>
 
@@ -1077,14 +1089,6 @@
           Your words are always your own. Please share only what
           genuinely reflects your experience.
         </p>
-
-        <button
-          id="change-rating-five"
-          class="text-button change-rating"
-          type="button"
-        >
-          Change my rating
-        </button>
 
       </section>
 
@@ -1169,6 +1173,9 @@
     const openHelper =
       document.getElementById("open-helper");
 
+    const changeRatingOther =
+      document.getElementById("change-rating-other");
+
     const assistant =
       document.getElementById("assistant");
 
@@ -1208,10 +1215,7 @@
     const copyStatus =
       document.getElementById("copy-status");
 
-     const changeRatingFive =
-      document.getElementById("change-rating-five");
-
-    const changeRatingFeedback =
+     const changeRatingFeedback =
       document.getElementById("change-rating-feedback");
 
  
@@ -1262,6 +1266,14 @@
 
       otherRatingOptions.hidden =
         rating === 5;
+
+      const conciergeChoice =
+        openHelper.closest(".choice");
+
+      if (conciergeChoice) {
+        conciergeChoice.hidden =
+          rating !== 5;
+      }
 
       if (rating === 5) {
 
@@ -1402,15 +1414,15 @@
     }
 
 
-    changeRatingFive.addEventListener(
+     /* =========================================
+       OPEN REVIEW ASSISTANT
+    ========================================= */
+
+    changeRatingOther.addEventListener(
       "click",
       goBackToRating
     );
 
-
-     /* =========================================
-       OPEN REVIEW ASSISTANT
-    ========================================= */
 
     openHelper.addEventListener(
       "click",
