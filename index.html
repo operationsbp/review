@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -129,7 +130,7 @@
       display: flex;
       justify-content: center;
       gap: clamp(5px, 2vw, 13px);
-      margin: 37px 0 12px;
+      margin: 18px 0 12px;
     }
 
     .star {
@@ -154,8 +155,10 @@
     }
 
     .hint {
+      margin: 0 0 12px;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 18px;
+      font-weight: 600;
       line-height: 1.6;
     }
 
@@ -403,31 +406,40 @@
       font: 15px/1.65 Georgia, "Times New Roman", serif;
     }
 
+    /* =========================
+       PHOTO REMINDER
+    ========================= */
+
     .photo-note {
       margin-top: 28px;
-      padding: 24px;
+      padding: 26px 24px;
       background: #f8f3e9;
-      border: 1px solid var(--line);
+      border: 1px solid var(--gold);
       text-align: center;
     }
 
     .photo-note h3 {
+      margin-bottom: 10px;
       font-size: clamp(22px, 4vw, 28px);
     }
 
-    .photo-note p:not(.choice-kicker):not(.photo-note-small) {
+    .photo-note p {
       max-width: 540px;
-      margin: 12px auto 0;
+      margin: 0 auto;
       color: var(--muted);
       line-height: 1.65;
     }
 
-    .photo-note-small {
-      margin: 12px 0 0;
-      color: var(--muted);
-      font-size: 12px;
-      font-style: italic;
+    .photo-icon {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--gold-dark);
+      font-size: 25px;
     }
+
+    /* =========================
+       SHARE OPTIONS
+    ========================= */
 
     .share-choice {
       margin-top: 30px;
@@ -528,15 +540,6 @@
       min-width: min(100%, 360px);
     }
 
-    .google-photo-note {
-      max-width: 500px;
-      margin: 15px auto 0;
-      color: var(--muted);
-      font: 14px/1.6 Georgia, "Times New Roman", serif;
-    }
-
-
-
     /* =========================
        DIVIDER
     ========================= */
@@ -560,14 +563,6 @@
 
     .direct {
       text-align: center;
-    }
-
-    .privacy {
-      margin: 25px auto 0;
-      max-width: 500px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.6;
     }
 
     /* =========================
@@ -659,13 +654,22 @@
       .question label {
         font-size: 21px;
       }
+
+      .hint {
+        font-size: 17px;
+      }
+
+      .photo-note {
+        padding: 24px 18px;
+      }
     }
-      .google-feedback-placeholder {
+
+    .google-feedback-placeholder {
       pointer-events: none;
       cursor: default;
     }
 
-</style>
+  </style>
 </head>
 
 <body>
@@ -695,6 +699,10 @@
 
         <p class="lede">
           Please share your thoughts with us.
+        </p>
+
+        <p id="rating-hint" class="hint">
+          Tap a star to begin
         </p>
 
         <div
@@ -740,10 +748,6 @@
 
         </div>
 
-        <p id="rating-hint" class="hint">
-          Tap a star to begin
-        </p>
-
       </section>
 
 
@@ -766,37 +770,32 @@
         </p>
 
         <h2 id="experience-heading">
-          We’re so glad you loved your experience.
+          We’re so glad you love your portrait art.
         </h2>
 
         <p class="lede" id="experience-lede">
-          Would you share a few words? Your story helps another
-          family imagine what creating something meaningful
-          with Legacy Portrait Art can feel like.
+          Your words can help another family understand what this experience can truly mean.
         </p>
 
 
         <div class="choice">
 
           <p class="choice-kicker">
-            Your experience. Your story.
+            Want a little help putting it into words?
           </p>
 
           <h3>
-            Tell us what you’d like to say.
+            Review Concierge
           </h3>
 
           <p>
-            Answer two simple questions, and our Review Concierge
-            will organize your own thoughts and words into a polished,
-            editable review.
+            Answer two simple questions and our AI Review Concierge will turn your thoughts into a polished review you can edit before posting.
           </p>
 
           <p class="dictation-note">
             <span>♢</span>
             <strong>Prefer to talk?</strong>
-            Tap the microphone on your device’s keyboard
-            and speak naturally.
+            Tap the microphone on your device’s keyboard and speak naturally. The Review Concierge will add grammar and punctuation.
           </p>
 
           <button
@@ -829,7 +828,7 @@
               </p>
 
               <h3>
-                Let’s begin with your experience.
+                Tell us what this experience meant to you.
               </h3>
 
             </div>
@@ -861,8 +860,7 @@
                 id="ai-question"
                 for="ai-answer"
               >
-                When you saw your portraits for the first time,
-                how did you feel?
+                What did you love most about your experience with us, from your session through seeing your portraits for the first time?
               </label>
 
               <textarea
@@ -918,17 +916,15 @@
           >
 
             <p class="eyebrow">
-              Your review is ready
+              Your thoughts
             </p>
 
             <h3>
-              Make it sound exactly like you.
+              Edit Your Review
             </h3>
 
             <p class="result-intro">
-              We’ve organized your thoughts into a review.
-              Read through it and make any changes you’d like
-              before sharing.
+              We’ve organized your thoughts into a review. Read through it and make any changes you’d like before sharing.
             </p>
 
             <textarea
@@ -945,7 +941,7 @@
                 class="button button-gold"
                 type="button"
               >
-                Copy My Review &amp; Share on Google
+                COPY/PASTE &amp; SHARE ON GOOGLE
               </button>
 
             </div>
@@ -955,6 +951,23 @@
               class="copy-status"
               role="status"
             ></p>
+
+
+            <!-- ONE PHOTO REMINDER ONLY -->
+
+            <div class="photo-note">
+
+              <span class="photo-icon">📸</span>
+
+              <h3>
+                Add a Photo to Your Review
+              </h3>
+
+              <p>
+                If your portrait is already hanging in your home, consider adding a photo to your Google review. It helps other families imagine what their own finished artwork could look like.
+              </p>
+
+            </div>
 
 
           </div>
@@ -987,17 +1000,7 @@
                 Share Your Review on Google
               </a>
 
-              <p class="google-photo-note">
-                If your portrait is already hanging in your home,
-                consider adding a photo to your Google review.
-                It helps other families imagine what their own
-                finished artwork could look like.
-              </p>
-
             </div>
-
-
-            
 
           </div>
 
@@ -1022,8 +1025,7 @@
               </h3>
 
               <p>
-                Your comments go directly to our team so we can better understand your experience.
-                If you’d like, a member of our team can also follow up with you personally.
+                Your comments go directly to our team so we can better understand your experience. If you’d like, a member of our team can also follow up with you personally.
               </p>
 
               <div class="private-feedback-form">
@@ -1069,29 +1071,21 @@
                 Share Your Feedback on Google
               </a>
 
-            
-            <button
-              id="change-rating-other"
-              class="text-button change-rating"
-              type="button"
-            >
-              Change my rating
-            </button>
+              <button
+                id="change-rating-other"
+                class="text-button change-rating"
+                type="button"
+              >
+                Change my rating
+              </button>
 
-</div>
+            </div>
 
           </div>
 
         </div>
 
-
-        <p class="privacy">
-          Your words are always your own. Please share only what
-          genuinely reflects your experience.
-        </p>
-
       </section>
-
 
     </main>
 
@@ -1117,8 +1111,6 @@
 
     /* =========================================
        QUESTIONS
-
-       These can be changed whenever you want.
     ========================================= */
 
     const QUESTIONS = [
@@ -1128,6 +1120,7 @@
       "Now that your portraits are in your home, what do they mean to you - and what do you think they’ll mean to your family years from now?"
 
     ];
+
 
     function getQuestions() {
 
@@ -1215,10 +1208,7 @@
     const copyStatus =
       document.getElementById("copy-status");
 
-     const changeRatingFeedback =
-      document.getElementById("change-rating-feedback");
 
- 
     /* =========================================
        STATE
     ========================================= */
@@ -1281,10 +1271,10 @@
           "Thank you";
 
         experienceHeading.textContent =
-          "We’re so glad you loved your experience.";
+          "We’re so glad you love your portrait art.";
 
         experienceLede.textContent =
-          "Would you share a few words? Your story helps another family imagine what creating something meaningful with Legacy Portrait Art can feel like.";
+          "Your words can help another family understand what this experience can truly mean.";
 
       } else {
 
@@ -1348,7 +1338,6 @@
             selectedRating
           );
 
-
           setExperienceMessage(selectedRating);
 
           showScreen("five");
@@ -1392,10 +1381,12 @@
 
       setTimeout(
         () => {
+
           const firstStar =
             document.querySelector('.star[data-rating="1"]');
 
           if (firstStar) firstStar.focus();
+
         },
         350
       );
@@ -1403,7 +1394,7 @@
     }
 
 
-     /* =========================================
+    /* =========================================
        OPEN REVIEW ASSISTANT
     ========================================= */
 
@@ -1664,6 +1655,7 @@ their experience sound better than they described it.
 
     }
 
+
     /* =========================================
        CONTINUE
     ========================================= */
@@ -1846,6 +1838,7 @@ their experience sound better than they described it.
 
         }
 
+
         if (copied) {
 
           copyReview.textContent =
@@ -1862,7 +1855,8 @@ their experience sound better than they described it.
       }
     );
 
-     /* =========================================
+
+    /* =========================================
        INITIALIZE
     ========================================= */
 
@@ -1872,3 +1866,4 @@ their experience sound better than they described it.
 
 </body>
 </html>
+```
